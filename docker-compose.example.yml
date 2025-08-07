@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: npps4
       PGUSER: postgres
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - /home/homelab/npps4/postgres:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready", "-d", "npps4"]
       interval: 30s
@@ -27,7 +27,7 @@ services:
     ports:
       - 51376:51376
     volumes:
-      - ./npps4_data:/data
+      - /home/homelab/npps4/data:/data
     restart: unless-stopped
     depends_on:
       postgresql:
